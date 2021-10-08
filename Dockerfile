@@ -1,9 +1,10 @@
 ARG BASE_IMAGE_VERSION=bullseye-slim
-ARG X11_DISPLAY=:0
+ARG X11_DISPLAY=${DISPLAY}
 
-FROM debian:$BASE_IMAGE_VERSION
+FROM debian:${BASE_IMAGE_VERSION}
 
-ENV DISPLAY=$X11_DISPLAY
+ENV DEBIAN_FRONTEND=noninteractive
+ENV DISPLAY=${X11_DISPLAY}
 
 RUN apt update -y && apt install -y \
   apt-transport-https \
@@ -11,4 +12,5 @@ RUN apt update -y && apt install -y \
   curl \
   git \
   gnupg \
-  --no-install-recommends
+  --no-install-recommends \
+  && rm -rf /var/lib/apt/lists/*
