@@ -1,10 +1,10 @@
 ARG BASE_IMAGE_VERSION=bullseye-slim
-ARG X11_DISPLAY=${DISPLAY}
 
 FROM debian:${BASE_IMAGE_VERSION}
 
 ENV DEBIAN_FRONTEND=noninteractive
-ENV DISPLAY=${X11_DISPLAY}
+
+VOLUME /persistent_data
 
 RUN apt update -y && apt install -y \
   apt-transport-https \
