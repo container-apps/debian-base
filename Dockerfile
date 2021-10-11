@@ -4,7 +4,7 @@ FROM debian:${BASE_IMAGE_VERSION}
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update -yq && apt -get install -yq \
+RUN apt-get update -yq && apt-get install -yq \
   apt-transport-https \
   ca-certificates \
   curl \
